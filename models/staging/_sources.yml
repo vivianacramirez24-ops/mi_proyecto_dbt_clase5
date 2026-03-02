@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: airbyte
+    description: "Datos cargados por Airbyte en MotherDuck"
+    schema: main
+    tables:
+      - name: nasa_apod
+        description: "NASA Astronomy Picture of the Day"
+      - name: pokemon
+        description: "Datos desde PokeAPI"
