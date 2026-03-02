@@ -1,27 +1,38 @@
-Welcome to your new dbt project!
-
-### Using the starter project
-
-Try running the following commands:
-
-* dbt run
-* dbt test
+\# Proyecto dbt Clase 5 – NASA + Pokémon
 
 
 
-### Resources:
+\## Descripción
 
-* Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
-* Check out [Discourse](https://discourse.getdbt.com/) for commonly asked questions and answers
-* Join the [chat](https://community.getdbt.com/) on Slack for live discussions and support
-* Find [dbt events](https://events.getdbt.com) near you
-* Check out [the blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
+Proyecto de modelado en dbt utilizando datos ingestados desde APIs externas
+
+(NASA APOD y Pokémon API) vía Airbyte hacia MotherDuck.
 
 
 
-\## DAG generado con dbt docs
+\## Arquitectura
+
+\- Staging: limpieza y normalización de fuentes
+
+\- Intermediate: agregaciones y combinación de fuentes
+
+\- Mart: modelo final tipo OBT para análisis
 
 
 
-!\[DAG](dbt-dag.png)
+\## Cómo ejecutar el proyecto
+
+
+
+dbt run
+
+dbt docs generate
+
+dbt docs serve
+
+
+
+\## DAG generado
+
+!\[DAG dbt](dbt-dag.png)
 
