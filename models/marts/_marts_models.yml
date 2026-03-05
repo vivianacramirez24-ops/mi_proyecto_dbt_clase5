@@ -1,0 +1,33 @@
+version: 2
+
+models:
+  - name: obt_api_dashboard
+    description: "Modelo mart/OBT para dashboard: resumen combinado de NASA APOD + conteo total de Pokemon."
+    columns:
+      - name: apod_date
+        description: "Fecha de publicación del contenido APOD."
+        tests:
+          - not_null
+
+      - name: media_type
+        description: "Fecha de publicación del contenido APOD."
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ["image", "video"]
+
+      - name: total_pokemon
+        description: "Cantidad total de Pokémon disponibles en la fuente."
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              arguments:
+                min_value: 0
+                max_value: 1000000
+
+    tests:
+      - dbt_expectations.expect_table_row_count_to_be_between:
+          arguments:
+            min_value: 1
+            max_value: 1000000

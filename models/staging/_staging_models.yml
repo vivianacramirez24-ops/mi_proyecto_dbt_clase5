@@ -1,0 +1,54 @@
+version: 2
+
+models:
+  - name: stg_nasa_apod
+    description: "Modelo de staging para NASA APOD, estandariza nombres y tipos."
+    columns:
+      - name: apod_date
+        description: "Fecha correspondiente a la imagen o video publicado por la NASA."
+        tests:
+          - not_null
+
+      - name: title
+        description: "Título oficial del contenido publicado por la NASA."
+        tests:
+          - not_null
+
+      - name: media_type
+        description: "Tipo de contenido retornado por la API (image o video)."
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ["image", "video"]
+
+    tests:
+      - dbt_expectations.expect_table_row_count_to_be_between:
+         arguments:
+            min_value: 1
+            max_value: 1000000
+
+      - dbt_expectations.expect_column_values_to_be_in_set:
+          arguments:
+                column_name: media_type
+                value_set: ["image", "video"]
+
+  - name: stg_pokemon
+    description: "Modelo de staging que normaliza los datos obtenidos desde la API pública de Pokémon."
+    columns:
+      - name: pokemon_id
+        description: "Identificador numérico del Pokémon."
+        tests:
+          - not_null
+          - unique
+
+      - name: pokemon_name
+        description: "Nombre del Pokémon."
+        tests:
+          - not_null
+
+    tests:
+      - dbt_expectations.expect_table_row_count_to_be_between:
+          arguments:
+            min_value: 1
+            max_value: 1000000

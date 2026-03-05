@@ -6,6 +6,6 @@ sources:
     schema: main
     tables:
       - name: nasa_apod
-        description: "NASA Astronomy Picture of the Day"
+        description: "Datos originales provenientes de la API NASA Astronomy Picture of the Day."
       - name: pokemon
-        description: "Datos desde PokeAPI"
+        description: "Datos originales provenientes de la API pública de Pokémon."

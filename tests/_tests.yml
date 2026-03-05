@@ -1,0 +1,14 @@
+version: 2
+
+tests:
+
+  - name: assert_apod_date_not_future
+    description: >
+      Test singular que valida que la fecha del APOD no sea mayor a la fecha actual.
+      Garantiza que no existan registros con fechas futuras provenientes de la API NASA.
+
+  - name: assert_pokemon_positive_metrics
+    description: >
+      Test singular que valida que las métricas de Pokémon como altura y peso
+      sean valores positivos. Evita registros con valores inválidos provenientes
+      de la API.
